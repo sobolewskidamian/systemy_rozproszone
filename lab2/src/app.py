@@ -95,11 +95,12 @@ class CurrencyResponse:
     def _get_rates_last_days_buy_sell(self):
         output = requests.get(
             "https://api.nbp.pl/api/exchangerates/rates/c/%s/last/10/?format=json" % self.currency_code)
-        output = json.loads(output.content)
-        rates = output.get("rates")
-        for i in rates:
-            self.last_days_rates[i["effectiveDate"]].ask = str(i["ask"])
-            self.last_days_rates[i["effectiveDate"]].bid = str(i["bid"])
+        if output.status_code != 404:
+            output = json.loads(output.content)
+            rates = output.get("rates")
+            for i in rates:
+                self.last_days_rates[i["effectiveDate"]].ask = str(i["ask"])
+                self.last_days_rates[i["effectiveDate"]].bid = str(i["bid"])
 
     def _get_rates_last_days_html(self):
         response = "<table><tr><td>Data</td><td>Kurs średni</td><td>Kupno</td><td>Sprzedaż</td></tr>"
