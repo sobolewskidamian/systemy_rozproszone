@@ -14,8 +14,8 @@ def handle_invalid_usage(error):
 @app.route('/')
 def hello():
     return '<form action="/currency" method="post">' \
-           'currency: <input type="text" id="currency" name="value"><br>' \
-           '<input type="submit" value="Submit">' \
+           'Kod waluty: <input type="text" id="currency" name="value"><br>' \
+           '<input type="submit" value="Pokaż statystyki">' \
            '</form>'
 
 

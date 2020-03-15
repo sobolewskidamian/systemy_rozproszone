@@ -70,7 +70,7 @@ class CurrencyResponse:
         response = "<table><tr><td>Data</td><td>Kurs średni</td><td>Kupno</td><td>Sprzedaż</td></tr>"
         for date in self.last_days_rates.keys():
             rate = self.last_days_rates[date]
-            response += "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (date, rate.mid, rate.ask, rate.bid)
+            response += "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (date, rate.mid, rate.bid, rate.ask)
         response += "</table>"
         return response
 
